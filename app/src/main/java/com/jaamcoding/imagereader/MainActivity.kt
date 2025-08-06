@@ -12,36 +12,22 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.jaamcoding.imagereader.ui.theme.ImageReaderTheme
+import com.jaamcoding.imagereader.viewmodel.ScannerViewModel
+import com.jaamcoding.imagereader.views.TabsView
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
+        val viewModel = ScannerViewModel()
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
             ImageReaderTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
+                Scaffold(
+                    modifier = Modifier.fillMaxSize()
+                ) { padding ->
+                    TabsView(viewModel, modifier = Modifier.padding(padding))
                 }
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    ImageReaderTheme {
-        Greeting("Android")
     }
 }
