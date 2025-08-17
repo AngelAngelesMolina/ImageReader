@@ -51,8 +51,8 @@ fun TabsView(vm: ScannerViewModel, modifier: Modifier = Modifier) {
 
         }
         when (selectedTab) {
-            0 -> GalleryView(vm)
-            1 -> CamaraView(vm)
+            0 -> GalleryView(vm).apply { vm.cleanText() }
+            1 -> CamaraView(vm).apply { vm.cleanText() }
             2 -> CollectionGalleryView()
         }
     }
